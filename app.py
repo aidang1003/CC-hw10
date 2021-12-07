@@ -25,7 +25,7 @@ conn = pymysql.connect(
         cursorclass = pymysql.cursors.DictCursor)  
 
 app = Flask(__name__)
-app.config['SECRET-KEY'] = _secret.value
+app.config['SECRET_KEY'] = _secret.value
 
 @app.route('/', methods=['GET'])
 def index():
