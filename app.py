@@ -14,6 +14,7 @@ _dbhostname = client.get_secret('DBHOSTNAME')
 _dbusername = client.get_secret('DBUSERNAME')
 _dbpassword = client.get_secret('DBPASSWORD')
 _dbname = client.get_secret('DBNAME')
+_secret = client.get_secret('SECRET_KEY')
 
 conn = pymysql.connect(
         host = _dbhostname.value, #os.environ.get('DBHOSTNAME'),
@@ -24,7 +25,7 @@ conn = pymysql.connect(
         cursorclass = pymysql.cursors.DictCursor)  
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+app.config['SECRET_KEY'] = _secret.value
 
 @app.route('/', methods=['GET'])
 def index():
